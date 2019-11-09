@@ -66,9 +66,51 @@ def dashboard():
         userpass = request.form.get('upass')
 
         sql_query = "select * from login_cred"
-
         mycursor.execute(sql_query)
+        myresult = mycursor.fetchall()
+
+        f = 0
+        for x in myresult:
+            if(x['username'] == username):
+                if(x['password'] == userpass):
+                    session['user'] = username
+                    f = 1
+                    break
+        if(f == 1):
+            return render_template('dashboard.html')
+        else:
+            return render_template('homepage.html')
+    return render_template('homepage.html')
+
+@app.route('/test')
+def continuous():
+    return render_template('testwindow.html')
+
+@app.route('/start-test')
+def test():  # using multi processing to run the video and audio analysis together
+    manager = multiprocessing.Manager()
+    dict1 = manager.dict()
+    dict2 = manager.dict()
+    proc1 = Process(target = f1,args = (dict1,))
+    proc2 = Process(target = f2,args = (dict2,))
+
+    proc2.join() # wait till video analysis sends in the dictionary file
+    proc1.join() 
+
+    while(len(list(dict2)) == 0):
+        continue
+    result(dict1, dict2)
+
+    return "Report Sent"
+
+@app.route('/logout')
+def logout():
+    session.pop('user')  # clearing the username stored in the session
+    return redirect('/')
+
+@app.route('/viewreports')
+def viewreports():
+    return  "Reports"
 
 
-
-
+app.run(debug = True)
