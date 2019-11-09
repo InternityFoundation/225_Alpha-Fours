@@ -22,5 +22,28 @@ def f1(dict1):
     dict1[0] = r1  # single dictionary containing the values
     dict2[1] = r2  # the count of the number of iterations to normalize the values
 
+def f3(dict2):
+    r1, r2, r3, r4, r5, r6 = audio_record_analysis.audio_c_bot()
+    try:
+        os.chdir('audio_chunks')
+        remove_all()
+    except:
+        print("cleaning complete")
+
+    def remove_all():
+        try:
+            for i in range(0,5):
+                file = "audio"+str(i)+".TextGrid"
+                os.remove(file)
+    dict2[0] = r1
+    dict2[1] = r2
+    dict2[2] = r3
+    dict2[3] = r4
+    dict2[4] = r5
+    dict2[5] = r6
+
+def f2(dict2):
+    f3(dict2)
+    
 
 
