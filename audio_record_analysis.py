@@ -2,7 +2,7 @@ from gtts import gTTS
 from playsound import playsound
 import time
 import speech_recognition as sr
-
+import os
 questions=[["Hi, thanks for coming in today.Think of me as a friend I do not judge people , I can not because  I am a computer.I will ask a few questions to get us started and please feel free to tell me anything , your answers are totally confidential.   So , how are you doing today? : "],
           ["where are you from : "],
           ["what are some cool things about the place you live : ",
@@ -66,4 +66,13 @@ def recordtotext(audio):  # recording to text and audio file
     print("done recording")
 
     return text, audio
-    
+
+language = 'en'
+def botspeak(line):
+    myobj = gTTS(text = line, lang = language, slow = False)
+    audio_file = "ques"+line[3:7]+".mp3"
+    myobj.save(audio_file)
+
+    # playing the converted file
+    playsound(audio_file)
+    os.remove(audio_file)
