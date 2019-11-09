@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+html {
+  height: 100%;
+  font-family: 'Lato';
+}
+body {
+  height: 100%;
+  margin: 0;
+  background: #172128;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+* {
+  box-sizing: border-box;
+}
+#container {
+  width: 1200px;
+  background: #202b33;
+  margin: 60px auto;
+  border-radius: 4px;
+}
+
+
+#sideMenu {
+  width: 240px;
+  height: 100%;
+  padding: 30px;
+  border-right: 5px solid #172128;
+  display: table-cell;
+  vertical-align: top;
+  color: #fff;
+}
+.menu {
+  list-style: none;
+  margin:  24px 0;
+  padding: 0;
+}
+.menu li {
+  display: block;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .6);
+  position: relative;
+}
+.menu li:hover {
+  color: #239ae3;
+}
+
+#content {
+  width: calc(100% - 240px);
+  height: 100%;
+  padding: 25px;
+  display: table-cell;
+  
+}
+#titleBar {
+  height: 36px;
+  margin-bottom: 30px;
+  
+}
+
+h1 {
+  display: block;
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  font-size: 16px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .6);
+  position: relative;
+}
+
+h2 {
+  display: block;
+  height: 30px;
+  width: 100%;
+  line-height: 22px;
+  font-size: 23px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .6);
+  position: relative;
+  left:348%;
+}
+
+
+.clearFix {
+  clear: both;
+}
+
+        </style>
+    </head>
+    <body>
+            <div id="container">
+                    <div id="sideMenu">
+                      <h1><strong>Dashboard Options</strong></h1>
+                  
+                      <ul class="menu">
+                        <li></li>
+                        <li><strong>Home</strong></li>
+                        <li><strong>Contact</strong></li>
+                        <li><strong>Logout</strong></li>
+                      </ul>
+                  
+                    </div>
+                    <div id="content">
+                      <div id="titleBar">
+                        <h2 style="color:#ffffff;"><strong>Dashboard</strong></h2>
+                        
+                    
+                      </div>
+                  </div>
+                  </div>
+    </body>
+</html>
