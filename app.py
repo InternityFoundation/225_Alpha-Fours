@@ -207,7 +207,7 @@ def result(dict1, dict2):
      
 app.config.update(
     MAIL_SERVER = "smtp.gmail.com",
-    MAIL_PORT = '465'
+    MAIL_PORT = '465',
     MAIL_USE_SSL = True,
     MAIL_USERNAME = 'mbchampyou@gmail.com',
     MAIL_PASSWORD = 'natrnjkpzexqafik',
