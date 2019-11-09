@@ -22,7 +22,7 @@ def f1(dict1):
     dict1[0] = r1  # single dictionary containing the values
     dict2[1] = r2  # the count of the number of iterations to normalize the values
 
-def f3(dict2):
+def f2(dict2):
     r1, r2, r3, r4, r5, r6 = audio_record_analysis.audio_c_bot()
     try:
         os.chdir('audio_chunks')
@@ -42,8 +42,16 @@ def f3(dict2):
     dict2[4] = r5
     dict2[5] = r6
 
-def f2(dict2):
-    f3(dict2)
-    
+mydb = MySQL.connect(
+    host = "localhost",
+    user = "root",
+    passwd = "admin",
+    database = "smart_c_bot"
+)
+
+mycursor = mydb.cursor(MySQLdb.cursors.DictCursor)
+
+
+
 
 
