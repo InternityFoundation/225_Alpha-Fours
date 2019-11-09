@@ -3,6 +3,8 @@ from playsound import playsound
 import time
 import speech_recognition as sr
 import os
+import text_emotion
+from text_emotion import *
 questions=[["Hi, thanks for coming in today.Think of me as a friend I do not judge people , I can not because  I am a computer.I will ask a few questions to get us started and please feel free to tell me anything , your answers are totally confidential.   So , how are you doing today? : "],
           ["where are you from : "],
           ["what are some cool things about the place you live : ",
@@ -76,3 +78,54 @@ def botspeak(line):
     # playing the converted file
     playsound(audio_file)
     os.remove(audio_file)
+
+def audio_c_bot():
+    count = 0
+    myspktime = []
+    mygender = ""
+    mypauses = []
+    myratespeech = []
+    myratio = []
+    emotionreport = []
+    sentimentreport = []
+    var = "audio"+str(count)+".wav"
+    count += 1
+    botspeak(questions[0][0])
+    # create a new directory containing the audio files 
+    # directory must include the praat file
+    try:
+        os.mkdir('.audio_chinks')
+    except(FileExistsError):
+        pass
+    os.chdir('audio_chunks')
+
+    ans, audio_file = recordtotext()
+    with open(var, "wb") as f:
+        f.write(audio_file.get_wav_data())
+    audio_path = os.getcwd()
+    print(voice_gender(var[:-4], audio_path))
+    myspktime.append(voice_speakingTime[:-4], audio_path)
+    mypauses.append(voice_pauses(var[:-4], audio_path))
+    myratespeech.append(voice_rateOfSpeech(var[:-4], audio_path))
+    myratio.append(voice_ratio(var[:-4], audio_path))
+    os.remove(var)
+
+    emotionreport.append(emotion(ans))
+    sentimentreport.append(list(sentiment(ans)))
+
+    botspeak(questions[1][0])
+    var = "audio"+str(count)+".wav"
+    count += 1
+    ans,audio_file=recordtotext()
+    with open(var, "wb") as f:
+        f.write(audio_file.get_wav_data())
+    audio_path = os.getcwd()
+    print(voice_gender(var[:-4], audio_path))
+    myspktime.append(voice_speakingTime(var[:-4], audio_path))
+    mypauses.append(voice_pauses(var[:-4], audio_path))
+    myratespeech.append(voice_rateOfSpeech(var[:-4], audio_path))
+    myratio.append(voice_ratio(var[:-4], audio_path))
+    os.remove(var)
+
+    emotionreport.append(emotion(ans))
+    sentimentreport.append(list(sentiment(ans)))
