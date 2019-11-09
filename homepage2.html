@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+  <title>Admin/User Page </title>
+  <style>
+      .wrapper{
+  text-align: center;
+  background-color: #24303C;
+  height: 100%
+  width: 100%;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+  width: 680px;
+  margin:0px auto 15px;
+  padding: 50px 0px;
+  text-align: center;
+}
+.heading{
+  display: inline-flex;
+  color: white;
+}
+.heading p{
+  padding: 15px 20px;
+  min-width: 300px;
+  font-size: 20px;
+}
+#Signup{
+ background-color: #1AB186;
+}
+#Login{
+ background-color: #435259;
+}
+#SignUp-content{
+  display : block;
+}
+#LogIn-content{
+  display : none;
+}
+.head-text{
+  font-size: 25px;
+  color: White;
+  margin: 25px auto;  
+}
+.Name{
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+#first, #last{
+  width: 330px;
+}
+
+input[type="textbox"]{
+  background-color: #24303C;
+  margin: 15px 0px;
+  width: 100%;
+  height: 35px;
+  float: left;
+  color: White;
+  font-size: 20px;
+  border: 1px solid #435259;
+}
+.getstarted{
+  background-color: #1AB186;
+  color: white;
+  font-size: 20px;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  margin-top: 25px;
+}
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="main">
+  <div class="heading">
+    <p id="Signup"  onClick="Signup()"> Admin Login </p>
+    <p id="Login" onClick="Login()" > User Login </p>
+  </div>
+    <div id="SignUp-content">
+   <p class="head-text">  Enter Admin Credentials </p>
+  <form>
+   <div class="formfield Name"> 
+     <!--input type="textbox" id="first" name="firstname" placeholder="  First Name*"/-->
+     <input type="text" id="uname" name="uname" class="form-control" placeholder="username" required >
+    </div>
+    <div class="formfield">
+     <!--input type="textbox" name="SetAPassword" placeholder="  Set A Password*"/--> 
+     <input type="password" id="upass" name="upass" class="form-control" placeholder="Password" required>
+     
+    </div>
+    <button class="getstarted">Login</button>
+    </form>
+    </div>
+    <div id="LogIn-content">
+   <p class="head-text">  Enter User Credentials </p>
+  <form>
+   <div class="formfield Name"> 
+     <!--input type="textbox" id="first" name="firstname" placeholder="  First Name*"/-->
+     <input type="text" id="uname" name="uname" class="form-control" placeholder="username" required >
+    </div>
+    <div class="formfield">
+        <!--input type="textbox" name="Password" placeholder="  Password*"/--> 
+        <input type="password" id="upass" name="upass" class="form-control" placeholder="Password" required>
+    </div>
+    <button class="getstarted">Login</button>
+    </form>
+    </div>
+    
+  </div>
+  </body>
+</html>
