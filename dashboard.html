@@ -67,6 +67,12 @@ body {
   
 }
 
+#image-test {
+  position: relative;
+  left:348%;
+  height:70px;
+}
+
 h1 {
   display: block;
   height: 30px;
@@ -90,6 +96,20 @@ h2 {
   left:348%;
 }
 
+h3 {
+  display: block;
+  line-height: 2px;
+  font-size: 16px;
+  font-weight: 200;
+  color: rgba(255, 255, 255, .6);
+  position: relative;
+  left:15%;
+  height:65px;
+}
+
+h3:hover {
+  color: #239ae3;
+}
 
 .clearFix {
   clear: both;
@@ -104,9 +124,9 @@ h2 {
                   
                       <ul class="menu">
                         <li></li>
-                        <li><strong>Home</strong></li>
-                        <li><strong>Contact</strong></li>
-                        <li><strong>Logout</strong></li>
+                        <li href="#"><strong>Home</strong></li>
+                        <li href="#"><strong>Contact</strong></li>
+                        <li href="/logout"><strong>Logout</strong></li>
                       </ul>
                   
                     </div>
@@ -114,8 +134,12 @@ h2 {
                       <div id="titleBar">
                         <h2 style="color:#ffffff;"><strong>Dashboard</strong></h2>
                         
-                    
                       </div>
+                      <div id="image-test">
+                          <img src="take-test.png" alt="take-test-pic" width="100" height="100">
+                          &nbsp; <h3><strong>Take Test</strong></h3>
+                      </div> 
+                      
                   </div>
                   </div>
     </body>
