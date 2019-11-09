@@ -5,6 +5,8 @@ import speech_recognition as sr
 import os
 import text_emotion
 from text_emotion import *
+import random
+
 questions=[["Hi, thanks for coming in today.Think of me as a friend I do not judge people , I can not because  I am a computer.I will ask a few questions to get us started and please feel free to tell me anything , your answers are totally confidential.   So , how are you doing today? : "],
           ["where are you from : "],
           ["what are some cool things about the place you live : ",
@@ -79,7 +81,7 @@ def botspeak(line):
     playsound(audio_file)
     os.remove(audio_file)
 
-def audio_c_bot():
+def audio_c_bot():   # main function calculating the values of the audio and sentiment analysis and returning the final calculated values.
     count = 0
     myspktime = []
     mygender = ""
@@ -176,3 +178,5 @@ def audio_c_bot():
                 botspeak(neutral[random.randint(0,len(neutral)-1)]) 
                 emotionreport.append(emotion(ans))
                 sentimentreport.append(list(sentiment(ans)))
+
+    return emotionreport, sentimentreport, mygender, mypauses, myratespeech, myratio
