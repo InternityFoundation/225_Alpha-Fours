@@ -1,4 +1,4 @@
-from Empath import Empath
+from empath import Empath
 import re
 import sys
 from textblob import TextBlob
@@ -18,11 +18,11 @@ def emotion(text):
     data = clean(data)
     d = emo.analyze(data)
 
-    dff={}
+    d_filtered={}
     for i in d:
         if(i in ['cheerfullness','pride','celebration','heroic','optimism','violence','hate','emotional','anger','disappointment']):
-            dff[i]=d[i]
-    return dff 
+            d_filtered[i]=d[i]
+    return d_filtered 
 
 def voice_gender(audio_file, audio_path):
     return mysp.myspgender(audio_file, audio_path)
