@@ -8,7 +8,11 @@ import audio_record_analysis
 import real_time_video
 import sys
 from flask import jsonify
-
+from flask_mail import Mail
+from threading import Thread
+from multiprocessing import Process
+import multiprocessing
+import base64
 app = Flask(__name__)
 app.secret_key = 'scb'
 with open('config.json','r') as c:
@@ -112,9 +116,6 @@ def logout():
 def viewreports():
     return  "Reports"
 
-
-app.run(debug = True)
-
 def result(dict1, dict2):
     weights = [2, 0, 2, 2, 3, 4, 3, 4, 4, 5]
     polarity_score = []
@@ -204,3 +205,32 @@ def result(dict1, dict2):
         str1 = "Well balanced state of mind. Cheer up yourself."
         print(str1)     
      
+app.config.update(
+    MAIL_SERVER = "smtp.gmail.com",
+    MAIL_PORT = '465'
+    MAIL_USE_SSL = True,
+    MAIL_USERNAME = 'mbchampyou@gmail.com',
+    MAIL_PASSWORD = 'natrnjkpzexqafik',
+) 
+
+mail = Mail(app)
+@app.route('/sendmail')
+def sendmail(r1, r2, r3, r4, r5, r6, r7):
+    mail.send_message("Your Test Report ",
+    sender = 'mbchampyou@gmail.com',
+    body="""
+    HELLO VINEETH
+    Thanks for taking the test.
+    Your report is given below :
+    """+"\nFINAL SCORE: "+str(r1)+"\nGENDER: "+str(r2)+"\n AVERAGE PAUSES: "+str(r3)+"\n RATE OF SPEECH: "+str(r4)+"\n SUBJECTIVITY SCORE"+str(r7)+"\n SPEAKING: "+str(r5)+"\nCONCLUSION: "+str(r6)+""" 
+                          Okay i think i've asked everything I need to ask. Thanks for sharing your thoughts with me. I appreciate your effort. I promise that all your answers will be confidential.
+Challenges are a part of everyday life. They make us stronger and without them life becomes somewhat meaningless because we have nothing to compare the good times to.
+These challenges come in many forms. For some, the challenge is doing well at school, for others it is getting to grips with financial worries.
+But, regardless of the challenge, facing up to it is key. Doing so will make you feel like you can take care of yourself, it will also make you understand the value of what you have now.
+Facing up to challenges and living through them give us the experiences that make up our life..
+ """
+       
+    )
+    return "mail sent successfully"
+
+app.run(debug = true)
