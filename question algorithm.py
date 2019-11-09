@@ -58,3 +58,34 @@ def subjectivity(answer):
 
 polarity("i am sad")
 
+
+
+weights=[2,0,2,2,3,4,3,4,4,5]
+total_score=[a*b for a,b in zip(polarity_score,weights)]
+print(total_score)
+
+
+!pip install nltk
+
+
+from textblob.classifiers import NaiveBayesClassifier
+train = [
+    ('I am depressed.', 'neg'),
+    ('I want to kill myself', 'neg'),
+    ('I feel very good about the place i live in.', 'pos'),
+    ('I feel great today', 'pos'),
+    ("I feel depressed most of the times ", 'neg'),
+    ('I am very close to my family and friends', 'pos'),
+    ('I am tired of this stuff.', 'neg'),
+    ("a couple days ago my nephew didn't call me back , I was kinda mad 'cause i had set aside some time to spend with him and he just blew it off and didn't call me back. ", 'neg'),
+    ('He is my sworn enemy!', 'neg'),
+    ('My boss is horrible.', 'neg')
+]
+test = [
+    ('This is depressing', 'neg'),
+    ('I will kill myself', 'neg'),
+    ("The place I live in is amazing", 'pos'),
+    ("I am depressed", 'neg'),
+    ('Gary is a friend of mine.', 'pos'),
+    ("I can't believe I'm doing this.", 'neg')
+]
