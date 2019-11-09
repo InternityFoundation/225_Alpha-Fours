@@ -1,6 +1,7 @@
 from gtts import gTTS
 from playsound import playsound
 import time
+import speech_recognition as sr
 
 questions=[["Hi, thanks for coming in today.Think of me as a friend I do not judge people , I can not because  I am a computer.I will ask a few questions to get us started and please feel free to tell me anything , your answers are totally confidential.   So , how are you doing today? : "],
           ["where are you from : "],
@@ -29,3 +30,40 @@ questions=[["Hi, thanks for coming in today.Think of me as a friend I do not jud
           "have you ever faced a situation which has caused a serious impact on your mental health : ",
           "How often do you feel down,depressed or hopeless : "]
            ]
+
+describe=["Can you tell me something more about it",
+          "Tell me more about it",
+          "like what",
+          "I didn't get you . Can you please elaborate"]
+
+positive=["that is great",
+         "awesome",
+         "that is good",
+         "nice",
+         "yeah",
+         "cool"]
+         
+neutral=["right",
+        "oh",
+        "okay",
+        "alright"]
+
+def audiototext(audio):  # audio file to text
+    r = sr.Recognizer()
+    with sr.AudioFile(audio) as source:
+        audio = r.record(source)
+        print("done recording")
+    text = r.recognize_google(audio)
+    
+    return text
+
+def recordtotext(audio):  # recording to text and audio file 
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Speak ")
+        audio = r.listen(source)
+    text = r.recognize_google(audio)
+    print("done recording")
+
+    return text, audio
+    
