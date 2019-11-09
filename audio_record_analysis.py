@@ -129,3 +129,50 @@ def audio_c_bot():
 
     emotionreport.append(emotion(ans))
     sentimentreport.append(list(sentiment(ans)))
+
+    for i in range(2,3):
+        botspeak(questions[i][random.randint(0,2)])
+        #ans=newaudioanaly()
+        ans,audio_file=newaudioanaly()
+        var = "audio"+str(i)+".wav"
+    
+        with open(var, "wb") as f:
+            f.write(audio_file.get_wav_data())
+        print(voice_gender(var[:-4], audio_path))
+        mygender=voice_gender(var[:-4], audio_path)
+        myspl.append(voice_speakingTime(var[:-4], audio_path))
+        mypauses.append(voice_pauses(var[:-4], audio_path))
+        myratespeech.append(voice_rateOfSpeech(var[:-4], audio_path))
+        myratio.append(voice_ratio(var[:-4], audio_path))
+
+        if(sentiment(ans)[1]>=-0.2 and sentiment(ans)[1]<=0.2):
+            botspeak(describe[random.randint(0,len(describe)-1)])
+            #ans=newaudioanaly()
+            ans,audio_file=newaudioanaly()
+            var = "audio"+str(count)+".wav"
+            count += 1
+            with open(var, "wb") as f:
+                f.write(audio_file.get_wav_data())
+            print(voice_gender(var[:-4], audio_path))
+            myspl.append(voice_speakingTime(var[:-4], audio_path))
+            mypauses.append(voice_pauses(var[:-4], audio_path))
+            myratespeech.append(voice_rateOfSpeech(var[:-4], audio_path))
+            myratio.append(voice_ratio(var[:-4], audio_path))
+            os.remove(var)
+            if(sentiment(ans)[0]>0.6):
+                botspeak(positive[random.randint(0,len(positive)-1)])
+                emotionreport.append(emotion(ans))
+                sentimentreport.append(list(sentiment(ans)))
+            else:
+                botspeak(neutral[random.randint(0,len(neutral)-1)])  
+                emotionreport.append(emotion(ans))
+                sentimentreport.append(list(sentiment(ans)))
+        else:
+            if(sentiment(ans)[0]>0.6):
+                botspeak(positive[random.randint(0,len(positive)-1)])
+                emotionreport.append(emotion(ans))
+                sentimentreport.append(list(sentiment(ans)))
+            else:
+                botspeak(neutral[random.randint(0,len(neutral)-1)]) 
+                emotionreport.append(emotion(ans))
+                sentimentreport.append(list(sentiment(ans)))
