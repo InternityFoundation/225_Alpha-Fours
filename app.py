@@ -35,6 +35,8 @@ def f2(dict2):
             for i in range(0,5):
                 file = "audio"+str(i)+".TextGrid"
                 os.remove(file)
+        except:
+            pass
     dict2[0] = r1
     dict2[1] = r2
     dict2[2] = r3
@@ -51,6 +53,21 @@ mydb = MySQL.connect(
 
 mycursor = mydb.cursor(MySQLdb.cursors.DictCursor)
 
+@app.route("/")  # the first function to be called as soon as the application starts
+def homepage():
+    return render_template('homepage.html')
+
+@app.route("/dashboard", methods = ['GET', 'POST'])
+def dashboard():
+    if('user' in session):
+        return render_template('dashboard.html')
+    if(request.method == "POST"):
+        username = request.form.get('uname')
+        userpass = request.form.get('upass')
+
+        sql_query = "select * from login_cred"
+
+        mycursor.execute(sql_query)
 
 
 
